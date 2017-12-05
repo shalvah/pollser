@@ -1,2 +1,33 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<div class="row">
+
+    {{#each polls }}
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <span class="glyphicon glyphicon-arrow-right"></span>{{ this.topic }}
+                </h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    {{#each this.choices }}
+                        <li class="list-group-item">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="{{this.id}}">
+                                {{ this.value }}
+                            </label>
+                        </div>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="panel-footer">
+                <button type="button" class="btn btn-primary btn-sm">
+                    Vote
+                </button>
+        </div>
+    </div>
+    </div>
+    {{/each}}
+</div>
