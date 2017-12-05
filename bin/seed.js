@@ -16,7 +16,7 @@ Poll.remove({})
         for (let i = 0; i < 5; i++) {
             polls.push({
                 topic: topics[i],
-                options: [
+                choices: [
                     {
                         value: "Yes",
                         votes: Math.round(Math.random() * 20)
