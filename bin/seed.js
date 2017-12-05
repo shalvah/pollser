@@ -19,15 +19,18 @@ Poll.remove({})
                 choices: [
                     {
                         value: "Yes",
-                        votes: Math.round(Math.random() * 20)
+                        votes: Math.round(Math.random() * 20),
+                        id: 0
                     },
                     {
                         value: "No",
-                        votes: Math.round(Math.random() * 20)
+                        votes: Math.round(Math.random() * 20),
+                        id: 1
                     },
                     {
                         value: "I really don't care",
-                        votes: Math.round(Math.random() * 20)
+                        votes: Math.round(Math.random() * 20),
+                        id: 2
                     }
                 ]
             });
