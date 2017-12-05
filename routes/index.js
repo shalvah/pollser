@@ -1,9 +1,12 @@
-var express = require('express');
-var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Pollser' });
+let router = require('express').Router();
+
+let Poll = require('./../models/poll');
+
+router.get('/', (req, res, next) => {
+    Poll.find().exec((err, polls) => {
+        res.render('index', { polls: polls });
+    });
 });
 
 module.exports = router;
