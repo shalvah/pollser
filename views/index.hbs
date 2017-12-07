@@ -12,13 +12,14 @@
                 <ul class="list-group">
                     {{#each this.choices }}
                         <li class="list-group-item">
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="{{this.id}}">
-                                {{ this.value }}
-                            </label>
-                        </div>
-                    </li>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionsRadios" id="{{this.id}}">
+                                    {{ this.value }}
+                                    <div class="alignright">{{ this.votes }}</div>
+                                </label>
+                            </div>
+                        </li>
                     {{/each}}
                 </ul>
             </div>
@@ -26,8 +27,8 @@
                 <button type="button" class="btn btn-primary btn-sm">
                     Vote
                 </button>
+            </div>
         </div>
-    </div>
     </div>
     {{/each}}
 </div>
