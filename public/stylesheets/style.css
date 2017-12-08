@@ -1,18 +1,38 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    padding: 50px;
+    margin-top: 20px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+.panel-body:not(.two-col) {
+    padding: 0px
 }
 
-body { margin-top:20px; }
-.panel-body:not(.two-col) { padding:0px }
-.glyphicon { margin-right:5px; }
-.glyphicon-new-window { margin-left:5px; }
-.panel-body .radio,.panel-body .checkbox {margin-top: 0px;margin-bottom: 0px;}
-.panel-body .list-group {margin-bottom: 0;}
-.margin-bottom-none { margin-bottom: 0; }
-.panel-body .radio label,.panel-body .checkbox label { display:block; }
-.alignright { float: right;}
+.glyphicon {
+    margin-right: 5px;
+}
+
+.glyphicon-new-window {
+    margin-left: 5px;
+}
+
+.panel-body .radio, .panel-body .checkbox {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.panel-body .list-group {
+    margin-bottom: 0;
+}
+
+.margin-bottom-none {
+    margin-bottom: 0;
+}
+
+.panel-body .radio label, .panel-body .checkbox label {
+    display: block;
+}
+
+.alignright {
+    float: right;
+}

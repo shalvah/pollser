@@ -6,8 +6,7 @@ let Poll = mongoose.model('Poll', {
     choices: [
         {
             value: String,
-            votes: Number,
-            id: Number
+            votes: Number
         }
     ]
 });
