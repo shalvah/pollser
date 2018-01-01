@@ -1,34 +1,50 @@
 <div class="row">
 
     {{#each polls }}
-    <div class="col-md-6">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">
-                    <span class="glyphicon glyphicon-arrow-right"></span>{{ this.topic }}
-                </h3>
-            </div>
-            <div class="panel-body">
-                <ul class="list-group">
-                    {{#each this.choices }}
-                        <li class="list-group-item">
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="optionsRadios" value="{{@index}}">
-                                    {{ this.value }}
-                                    <div class="alignright">{{ this.votes }}</div>
-                                </label>
-                            </div>
-                        </li>
-                    {{/each}}
-                </ul>
-            </div>
-            <div class="panel-footer">
-                <button type="button" class="btn btn-primary btn-sm">
-                    Vote
-                </button>
-            </div>
+        <div class="col-md-6">
+            <form onsubmit="vote(event);" id="{{this._id}}">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <span class="glyphicon glyphicon-arrow-right"></span>{{ this.topic }}
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            {{#each this.choices }}
+                                <li class="list-group-item">
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" value="{{@index}}">
+                                            {{ this.value }}
+                                            <div class="alignright" id="vote-count-{{../id}}-{{@index}}">{{ this.votes }}</div>
+                                        </label>
+                                    </div>
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                    <div class="panel-footer">
+                        <input type="submit" id="vote-btn-{{this.id}}" class="btn btn-primary btn-sm" value="Vote">
+                    </div>
+                </div>
+            </form>
         </div>
-    </div>
     {{/each}}
 </div>
+
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    var vote = function (event) {
+        event.preventDefault();
+        var pollId = event.target.id;
+        var choice = event.target.optionsRadios.value;
+        axios.post('/' + pollId + '/vote', {choice: choice});
+        document.querySelector('#vote-btn-' + pollId).disabled = true;
+        var voteCount = document.querySelector('#vote-count-' + pollId + '-' + choice);
+        voteCount.textContent++;
+        voteCount.style.color = 'green';
+        voteCount.style.fontWeight = '900';
+    };
+</script>
