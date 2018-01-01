@@ -5,9 +5,12 @@ require('mongoose').connect('mongodb://localhost/pollser');
 const topics = [
     "Should dogs be allowed to fly?",
     "Should doors be shut at night?",
-    "Should developers use IDEs?"
+    "Should developers use IDEs?",
+    "Should cars have four wheels?",
+    "Should humans be allowed to wear shoes?"
 ];
-let Poll = require('../models/poll');
+
+const Poll = require('../models/poll');
 
 // empty the collection first
 Poll.remove({})
