@@ -44,7 +44,32 @@
         document.querySelector('#vote-btn-' + pollId).disabled = true;
         var voteCount = document.querySelector('#vote-count-' + pollId + '-' + choice);
         voteCount.textContent++;
-        voteCount.style.color = 'green';
+        voteCount.style.color = 'blue';
         voteCount.style.fontWeight = '900';
     };
+</script>
+
+<script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+<script>
+    var pusher = new Pusher('47db0ec187024982d1fa', { cluster: 'eu' });
+    var socketId;
+
+    // retrieve the socket ID once we're connected
+    pusher.connection.bind('connected', function() {
+        socketId = pusher.connection.socket_id;
+    });
+
+    pusher.subscribe('poll-events')
+            .bind('vote', function (data) {
+                var pollId = data.pollId;
+                var choice = data.choice;
+                var voteCount = document.querySelector('#vote-count-' + pollId + '-' + choice);
+                voteCount.textContent++;
+                // we'll flash the colour for a moment
+                var color = voteCount.style.color;
+                setTimeout(function () {
+                    voteCount.style.color = color;
+                }, 2000);
+                voteCount.style.color = 'green';
+            });
 </script>
