@@ -26,10 +26,10 @@ PUSHER_APP_CLUSTER=your-app-cluster
 
 Look for these lines of JavaScript in `views/index.hbs`:
 ```javascript
-var pusher = new Pusher('YOUR_APP_ID', {cluster: 'YOUR_APP_CLUSTER'});
+var pusher = new Pusher('YOUR_APP_KEY', {cluster: 'YOUR_APP_CLUSTER'});
 ```
 
-Insert your Pusher app ID and cluster in the appropriate places.
+Insert your Pusher app key and cluster in the appropriate places.
 
 Start your MongoDB server by running `mongod`.
 
